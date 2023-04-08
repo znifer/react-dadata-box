@@ -65,7 +65,7 @@ const fakeRandomKey = () => Math.random().toString(16).slice(2);
 const SuggestionInfo = ({ data = {}, type }) => (
   <div className="react-dadata__suggestion-info">
     <span>
-      {[type === 'party' ? data.inn || null : data.bic || null, (data.address && data.address.value) || null].join(' ')}
+      {type === 'fms_unit' ? `Код подразделения ${data.code}` : [type === 'party' ? data.inn || null : data.bic || null, (data.address && data.address.value) || null].join(' ')}
     </span>
   </div>
 );
@@ -179,7 +179,7 @@ const SuggestionsList = ({
               textToHighlight={value}
               autoEscape
             />
-            {(type === 'party' || type === 'bank') && <SuggestionInfo data={data} type={type} />}
+            {(type === 'party' || type === 'bank' || type === 'fms_unit') && <SuggestionInfo data={data} type={type} />}
           </div>
         ))}
         {actions}
