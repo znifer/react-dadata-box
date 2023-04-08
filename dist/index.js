@@ -109,7 +109,7 @@ var SuggestionInfo = function SuggestionInfo(_ref) {
     React.createElement(
       'span',
       null,
-      [type === 'party' ? data.inn || null : data.bic || null, data.address && data.address.value || null].join(' ')
+      type === 'fms_unit' ? '\u041A\u043E\u0434 \u043F\u043E\u0434\u0440\u0430\u0437\u0434\u0435\u043B\u0435\u043D\u0438\u044F ' + data.code : [type === 'party' ? data.inn || null : data.bic || null, data.address && data.address.value || null].join(' ')
     )
   );
 };
@@ -243,7 +243,7 @@ var SuggestionsList = function SuggestionsList(_ref3) {
           textToHighlight: value,
           autoEscape: true
         }),
-        (type === 'party' || type === 'bank') && React.createElement(SuggestionInfo, { data: data, type: type })
+        (type === 'party' || type === 'bank' || type === 'fms_unit') && React.createElement(SuggestionInfo, { data: data, type: type })
       );
     }),
     actions
